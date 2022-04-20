@@ -5,8 +5,7 @@
 #include <cstddef>
 #include <cstring>
 #include "car.hpp"
-#include "doors.hpp"
-#include "perf.hpp"
+
 //
 
 Car::Car(){
@@ -20,8 +19,8 @@ Car::Car(){
 }
 
 Car::Car(char const* const manufacturerName, char const* const modelName, PerformanceStats perf, uint8_t numSeats, DoorKind backseatDoorDesign){
-	manufacturer = const_cast<char*>(manufacturerName);
-	model = const_cast<char*>(modelName);
+	manufacturer = *manufacturerName;
+	manufacturer = *modelName;
 	zeroToSixtyNs = perf.zeroToSixtyNs;
 	headonDragCoeff = perf.headonDragCoeff;
 	horsepower = perf.horsepower;
@@ -77,11 +76,11 @@ DoorKind Car::getBackseatDoors() const{
 }
 
 void Car::manufacturerChange(char const* const newManufacturer){
-	manufacturer = const_cast<char*>(newManufacturer);
+	manufacturer = *newManufacturer;
 }
 
 void Car::modelNameChange(char const* const newModelName){
-	model = const_cast<char*>(newModelName);
+	model = *newModelName;
 }
 
 void Car::reevaluateStats(PerformanceStats newStats){
