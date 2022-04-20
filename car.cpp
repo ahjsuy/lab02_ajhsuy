@@ -19,8 +19,8 @@ Car::Car(){
 }
 
 Car::Car(char const* const manufacturerName, char const* const modelName, PerformanceStats perf, uint8_t numSeats, DoorKind backseatDoorDesign){
-	manufacturer = *manufacturerName;
-	manufacturer = *modelName;
+	*manufacturer = *manufacturerName;
+	*manufacturer = *modelName;
 	zeroToSixtyNs = perf.zeroToSixtyNs;
 	headonDragCoeff = perf.headonDragCoeff;
 	horsepower = perf.horsepower;
@@ -29,8 +29,8 @@ Car::Car(char const* const manufacturerName, char const* const modelName, Perfor
 }
 
 Car::Car(Car const & o){
-	manufacturer = o.manufacturer;
-	model = o.model;
+	*manufacturer = *o.manufacturer;
+	*model = *o.model;
 	zeroToSixtyNs = o.zeroToSixtyNs;
 	headonDragCoeff = o.headonDragCoeff;
 	horsepower = o.horsepower;
@@ -44,8 +44,8 @@ Car::~Car(){
 }
 
 Car& Car::operator=(Car const& o){
-	manufacturer = o.manufacturer;
-	model = o.model;
+	*manufacturer = *o.manufacturer;
+	*model = *o.model;
 	zeroToSixtyNs = o.zeroToSixtyNs;
 	headonDragCoeff = o.headonDragCoeff;
 	horsepower = o.horsepower;
@@ -76,11 +76,11 @@ DoorKind Car::getBackseatDoors() const{
 }
 
 void Car::manufacturerChange(char const* const newManufacturer){
-	manufacturer = *newManufacturer;
+	*manufacturer = *newManufacturer;
 }
 
 void Car::modelNameChange(char const* const newModelName){
-	model = *newModelName;
+	*model = *newModelName;
 }
 
 void Car::reevaluateStats(PerformanceStats newStats){
