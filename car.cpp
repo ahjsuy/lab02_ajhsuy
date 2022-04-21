@@ -33,8 +33,8 @@ Car::Car(char const* const manufacturerName, char const* const modelName, Perfor
 Car::Car(Car const & o){
 	manufacturer = new char[strlen(o.manufacturer) + 1];
 	model = new char[strlen(o.model)+ 1];
-	*manufacturer = *o.manufacturer;
-	*model = *o.model;
+	strcpy(manufacturer, o.manufacturer);
+	strcpy(model, o.model);
 	zeroToSixtyNs = o.zeroToSixtyNs;
 	headonDragCoeff = o.headonDragCoeff;
 	horsepower = o.horsepower;
