@@ -50,17 +50,19 @@ Car::~Car(){
 }
 
 Car& Car::operator=(Car const& o){
-	delete[] manufacturer;
-	delete[] model;
-	manufacturer = new char[strlen(o.manufacturer) + 1];
-	model = new char[strlen(o.model) + 1];
-	strcpy(manufacturer, o.manufacturer);
-	strcpy(model, o.model);
-	zeroToSixtyNs = o.zeroToSixtyNs;
-	headonDragCoeff = o.headonDragCoeff;
-	horsepower = o.horsepower;
-	backseatDoors = o.backseatDoors;
-	seatCount = o.seatCount;
+	if(this != &o){
+		delete[] manufacturer;
+		delete[] model;
+		manufacturer = new char[strlen(o.manufacturer) + 1];
+		model = new char[strlen(o.model) + 1];
+		strcpy(manufacturer, o.manufacturer);
+		strcpy(model, o.model);
+		zeroToSixtyNs = o.zeroToSixtyNs;
+		headonDragCoeff = o.headonDragCoeff;
+		horsepower = o.horsepower;
+		backseatDoors = o.backseatDoors;
+		seatCount = o.seatCount;
+	}
 	return *this;
 }
 
