@@ -19,8 +19,10 @@ Car::Car(){
 }
 
 Car::Car(char const* const manufacturerName, char const* const modelName, PerformanceStats perf, uint8_t numSeats, DoorKind backseatDoorDesign){
+	manufacturer = new char[strlen(manufacturerName) + 1];
+	model = new char[strlen(modelName) + 1];
 	*manufacturer = *manufacturerName;
-	*manufacturer = *modelName;
+	*model = *modelName;
 	zeroToSixtyNs = perf.zeroToSixtyNs;
 	headonDragCoeff = perf.headonDragCoeff;
 	horsepower = perf.horsepower;
@@ -29,6 +31,8 @@ Car::Car(char const* const manufacturerName, char const* const modelName, Perfor
 }
 
 Car::Car(Car const & o){
+	manufacturer = new char[strlen(o.manufacturer) + 1];
+	model = new char[strlen(o.model)+ 1];
 	*manufacturer = *o.manufacturer;
 	*model = *o.model;
 	zeroToSixtyNs = o.zeroToSixtyNs;
@@ -41,6 +45,8 @@ Car::Car(Car const & o){
 Car::~Car(){
 	//recycle memory of variables
 	//performancestats
+	delete manufacturer;
+	delete model;
 }
 
 Car& Car::operator=(Car const& o){
@@ -96,3 +102,4 @@ void Car::recountSeats(uint8_t newSeatCount){
 void Car::reexamineDoors(DoorKind newDoorKind){
 	backseatDoors = newDoorKind;
 }
+
