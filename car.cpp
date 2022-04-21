@@ -50,8 +50,8 @@ Car::~Car(){
 }
 
 Car& Car::operator=(Car const& o){
-	*manufacturer = *o.manufacturer;
-	*model = *o.model;
+	strcpy(manufacturer, o.manufacturer);
+	strcpy(model, o.model);
 	zeroToSixtyNs = o.zeroToSixtyNs;
 	headonDragCoeff = o.headonDragCoeff;
 	horsepower = o.horsepower;
