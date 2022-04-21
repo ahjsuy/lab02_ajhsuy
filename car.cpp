@@ -21,8 +21,8 @@ Car::Car(){
 Car::Car(char const* const manufacturerName, char const* const modelName, PerformanceStats perf, uint8_t numSeats, DoorKind backseatDoorDesign){
 	manufacturer = new char[strlen(manufacturerName) + 1];
 	model = new char[strlen(modelName) + 1];
-	*manufacturer = *manufacturerName;
-	*model = *modelName;
+	strcpy(manufacturer, manufacturerName);
+	strcpy(model, modelName);
 	zeroToSixtyNs = perf.zeroToSixtyNs;
 	headonDragCoeff = perf.headonDragCoeff;
 	horsepower = perf.horsepower;
