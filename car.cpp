@@ -82,11 +82,11 @@ DoorKind Car::getBackseatDoors() const{
 }
 
 void Car::manufacturerChange(char const* const newManufacturer){
-	*manufacturer = *newManufacturer;
+	strcpy(manufacturer, newManufacturer);
 }
 
 void Car::modelNameChange(char const* const newModelName){
-	*model = *newModelName;
+	strcpy(model, newModelName);
 }
 
 void Car::reevaluateStats(PerformanceStats newStats){
