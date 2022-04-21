@@ -9,6 +9,8 @@
 //
 
 Car::Car(){
+	manufacturer = new char[8];
+	model = new char[8];
 	manufacturer = nullptr;
 	model = nullptr;
 	zeroToSixtyNs = 0;
@@ -43,8 +45,6 @@ Car::Car(Car const & o){
 }
 
 Car::~Car(){
-	//recycle memory of variables
-	//performancestats
 	delete manufacturer;
 	delete model;
 }
@@ -82,10 +82,14 @@ DoorKind Car::getBackseatDoors() const{
 }
 
 void Car::manufacturerChange(char const* const newManufacturer){
+	delete manufacturer;
+	manufacturer = new char[strlen(newManufacturer) + 1];
 	strcpy(manufacturer, newManufacturer);
 }
 
 void Car::modelNameChange(char const* const newModelName){
+	delete model;
+	model = new char[strlen(newModelName) + 1];
 	strcpy(model, newModelName);
 }
 
