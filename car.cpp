@@ -45,11 +45,15 @@ Car::Car(Car const & o){
 }
 
 Car::~Car(){
-	delete manufacturer;
-	delete model;
+	delete[] manufacturer;
+	delete[] model;
 }
 
 Car& Car::operator=(Car const& o){
+	delete[] manufacturer;
+	delete[] model;
+	manufacturer = new char[strlen(o.manufacturer) + 1];
+	model = new char[strlen(o.model) + 1];
 	strcpy(manufacturer, o.manufacturer);
 	strcpy(model, o.model);
 	zeroToSixtyNs = o.zeroToSixtyNs;
@@ -82,13 +86,13 @@ DoorKind Car::getBackseatDoors() const{
 }
 
 void Car::manufacturerChange(char const* const newManufacturer){
-	delete manufacturer;
+	delete[] manufacturer;
 	manufacturer = new char[strlen(newManufacturer) + 1];
 	strcpy(manufacturer, newManufacturer);
 }
 
 void Car::modelNameChange(char const* const newModelName){
-	delete model;
+	delete[] model;
 	model = new char[strlen(newModelName) + 1];
 	strcpy(model, newModelName);
 }
